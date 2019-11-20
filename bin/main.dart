@@ -6,19 +6,19 @@
 String simplify(String fraction) {
   List numbers = fraction.split('/');
 //print(numbers);
-  List factors = [];
-  int x = int.parse(numbers[0]);
-  int y = int.parse(numbers[1]);
-  for (int i = 1; i < (x < y ? x : y)+1; i++) {
-    if (x % i == 0 && y % i == 0) {
-      factors.add(i);
+  int hcf =1;
+  int num = int.parse(numbers[0]);
+  int den = int.parse(numbers[1]);
+  for (int i = 1; i < (num < den ? num : den)+1; i++) {
+    if (num % i == 0 && den % i == 0) {
+      hcf = i;
     }
   }
 //  print(factors);
-  return '${(x ~/ factors[factors.length - 1])}/${(y ~/ factors[factors.length - 1])}';
+  return '${(num ~/ hcf)}/${(den ~/ hcf)}';
 }
 
 main() {
-  String s = simplify('4/3');
+  String s = simplify('250/300');
   print(s);
 }
